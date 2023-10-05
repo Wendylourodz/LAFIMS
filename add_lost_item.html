@@ -1,0 +1,26 @@
+        <label for="description">Description: </label>
+        <input type="text" id="description" name="description" required>
+        </div>
+        <label for="location">Location:</label>
+        <input type="text" id="location" name="location" required>
+      </div>
+      <div class="input-container">
+        <input type="submit" value="Add Lost Item">
+      </div>
+    </form>
+    
+    {% if new_image and new_title %}
+    <div>
+        <img src="{{ new_image.url }}" alt="Uploaded Image" width="300">
+        <div>{{ new_title }}</div>
+    </div>
+    {% endif %}
+    
+    <a href=''items:lost_items_list' %}" class="btn btn-primary">Back to Lost Items List</a>
+  </div>
+  </div>
+  </script>
+
+</body>
+</html>
+{% endblock %}
