@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Claimed Items - Lost and Found App</title>
+    <style>
+        body {
+            Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #2730a3;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>Claimed Items</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in claimed_items %}
+            <tr>
+                <td><img src="{{ item.image.url }}" alt="{{ item.name }}" width="100" height="100"></td>
+                <td>{{ item.name }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No claimed items found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
