@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Lost Items List
+{% endblock %}
+
+{% block content %}
+<h2 class="text-center">Lost Items List</h2>
+
+<div class="d-flex flex-wrap justify-content-center">
+    {% for item in lost_items %}
+    <div class="m-3 text-center">
+        <a href='' data-toggle="modal" data-target="#itemModal{{ item.id }}">
+            <img src="{{ item.image.url }}" alt="{{ item.name }}" width="300">
+            <div>{{ item.name }}</div>
+        </a>
+    </div>
+
+    <div class="modal fade" id="itemModal{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="itemModalLabel{{ item.id }}" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="itemModalLabel{{ item.id }}">{{ item.name }}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ item.image.url }}" alt="{{ item.name }}" class="img-fluid mb-3">
+                    <p><strong>Name:</strong> {{ item.name }}</p>
+                    <p><strong>Email:</strong> {{ item.email }}</p>
+                    <p><strong>Date Lost:</strong> {{ item.date_lost }}</p>
+                    <p><strong>Location:</strong> {{ item.location }}</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% if not lost_items %}
+    <div class="text-center mt-5">
+        No lost items found.
+    </div>
+{% endif %}
+
+<div class="text-center mt-5">
+    <a href=''items:add_lost_item' %}" class="btn btn-primary">Add Lost Item</a>
+</div>
+
+{% endblock %}
