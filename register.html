@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            {% if error_message %}
+                <p class="alert alert-danger">
+                    <strong>{{error_message}}</strong>
+                </p>
+            {% endif %}
+            <div class="text-center">
+                <h2>Registration Form</h2>
+            </div>
+            <form action="{% url 'items:register' %}" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password">
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
